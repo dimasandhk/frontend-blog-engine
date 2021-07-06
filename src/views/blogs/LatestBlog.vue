@@ -7,19 +7,23 @@
 		<div class="row justify-content-center">
 			<BlogCard v-for="blog of docs.docs" :key="blog._id" :blog="blog" />
 		</div>
+		<BlogNavigation v-if="!isEmpty" :page="docs" />
 	</div>
 </template>
 
 <script>
 import progress from "nprogress";
+
 import BlogCard from "../../components/BlogCard.vue";
+import BlogNavigation from "../../components/BlogNavigation.vue";
 import GuestService from "../../api/GuestService";
 
 export default {
-	components: { BlogCard },
+	components: { BlogCard, BlogNavigation },
 	data: () => ({
 		docs: {}
 	}),
+	props: { isEmpty: Boolean },
 	async mounted() {
 		progress.start();
 		try {
@@ -32,6 +36,19 @@ export default {
 		}
 
 		progress.done();
+	},
+	watch: {
+		$route: {
+			async handler(value) {
+				try {
+					const response = await GuestService.getLatestBlog(value.query.page);
+					this.docs = { ...response };
+					this.$emit("notFound", false);
+				} catch (err) {
+					this.$emit("notFound", true);
+				}
+			}
+		}
 	}
 };
 </script>

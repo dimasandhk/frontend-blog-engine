@@ -2,7 +2,7 @@ $text: #aa1e23;
 $bg: #960c0c;
 
 @mixin mainButton($useEffect) {
-	&:hover {
+	&:hover:not([disabled]) {
 		@if ($useEffect == "true") {
 			margin-top: -5px;
 		}

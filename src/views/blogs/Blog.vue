@@ -6,7 +6,7 @@
 				<h3>
 					<span>{{ $route.name.split("Blog")[0] }}</span> Blogs
 				</h3>
-				<router-view @notFound="switchState" />
+				<router-view @notFound="switchState" :isEmpty="show404" />
 				<h5 class="mt-3" v-show="show404">
 					{{ $route.name.split("Blog")[0] }} Blogs not found on page {{ $route.query.page }}
 				</h5>
