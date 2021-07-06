@@ -1,0 +1,12 @@
+$text: #aa1e23;
+$bg: #960c0c;
+
+@mixin mainButton {
+	&:hover {
+		margin-top: -5px;
+		background-color: lighten($color: $bg, $amount: 10%) !important;
+	}
+	transition: 0.3s all;
+	border: none;
+	background-color: $bg !important;
+}
