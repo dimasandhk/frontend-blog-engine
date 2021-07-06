@@ -12,10 +12,34 @@
 			</button>
 			<div class="collapse navbar-collapse" id="navbarNavAltMarkup">
 				<div class="navbar-nav ml-auto">
-					<router-link class="nav-link mr-3" to="/">Home</router-link>
-					<router-link class="nav-link mr-3" :to="{ name: 'LatestBlog' }">Latest Blog</router-link>
-					<router-link class="nav-link mr-3" :to="{ name: 'OldestBlog' }">Oldest Blog</router-link>
-					<router-link class="nav-link mr-3" to="/">Journalist</router-link>
+					<router-link
+						class="nav-link mr-3"
+						to="/"
+						data-toggle="collapse"
+						data-target=".navbar-collapse.show"
+						>Home</router-link
+					>
+					<router-link
+						class="nav-link mr-3"
+						to="/blog/latest?page=1"
+						data-toggle="collapse"
+						data-target=".navbar-collapse.show"
+						>Latest Blog</router-link
+					>
+					<router-link
+						class="nav-link mr-3"
+						to="/blog/oldest?page=1"
+						data-toggle="collapse"
+						data-target=".navbar-collapse.show"
+						>Oldest Blog</router-link
+					>
+					<router-link
+						class="nav-link mr-3"
+						to="/"
+						data-toggle="collapse"
+						data-target=".navbar-collapse.show"
+						>Journalist</router-link
+					>
 				</div>
 			</div>
 		</div>

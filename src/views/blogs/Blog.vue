@@ -1,7 +1,7 @@
 <template>
 	<div>
 		<Navbar />
-		<div class="blog-section">
+		<div class="blog-section mb-5">
 			<div class="container">
 				<h3>
 					<span>{{ $route.name.split("Blog")[0] }}</span> Blogs
@@ -16,7 +16,7 @@
 export default {
 	beforeCreate() {
 		if (!this.$route.query.page) {
-			this.$router.push("/blog/latest?page=1");
+			this.$router.push(`${this.$route.path}?page=1`);
 		}
 	}
 };
