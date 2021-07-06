@@ -1,7 +1,7 @@
 <template>
 	<div class="home">
 		<div class="container mt-5 text-center">
-			<h3 class="mb-4">Blog Engine <br />by Dimas</h3>
+			<h1 class="mb-4"><span>Blog Engine</span> by Dimas</h1>
 			<router-link class="btn btn-lg btn-dark shadow-none" :to="{ name: 'BlogSection' }">
 				Masuk Ke Blog
 			</router-link>
@@ -18,12 +18,14 @@ export default {
 <style lang="scss" scoped>
 @import "../assets/scss/scheme.scss";
 .home {
-	h3 {
-		color: $text;
+	h1 {
+		span {
+			color: $text;
+		}
 		font-weight: 700;
 	}
 	.btn {
-		@include mainButton();
+		@include mainButton("true");
 	}
 }
 </style>

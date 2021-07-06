@@ -10,7 +10,24 @@ const routes = [
 	{
 		path: "/blog",
 		name: "BlogSection",
-		component: () => import("../views/blogs/Blog.vue")
+		component: () => import("../views/blogs/Blog.vue"),
+		redirect: "/blog/latest",
+		children: [
+			{
+				path: "/:catchAll(.*)",
+				redirect: "/blog/latest"
+			},
+			{
+				path: "latest",
+				name: "LatestBlog",
+				component: () => import("../views/blogs/LatestBlog.vue")
+			},
+			{
+				path: "oldest",
+				name: "OldestBlog",
+				component: () => import("../views/blogs/OldestBlog.vue")
+			}
+		]
 	}
 ];
 

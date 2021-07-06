@@ -1,11 +1,14 @@
 $text: #aa1e23;
 $bg: #960c0c;
 
-@mixin mainButton {
+@mixin mainButton($useEffect) {
 	&:hover {
-		margin-top: -5px;
-		background-color: lighten($color: $bg, $amount: 10%) !important;
+		@if ($useEffect == "true") {
+			margin-top: -5px;
+		}
+		background-color: lighten($color: $bg, $amount: 4%) !important;
 	}
+	font-weight: 700;
 	transition: 0.3s all;
 	border: none;
 	background-color: $bg !important;

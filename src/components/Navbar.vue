@@ -1,5 +1,5 @@
 <template>
-	<nav class="navbar navbar-expand-lg navbar-light">
+	<nav class="navbar fixed-top navbar-expand-lg navbar-light">
 		<div class="container">
 			<router-link class="navbar-brand" to="/">Blog Engine >></router-link>
 			<button
@@ -7,17 +7,15 @@
 				type="button"
 				data-toggle="collapse"
 				data-target="#navbarNavAltMarkup"
-				aria-controls="navbarNavAltMarkup"
-				aria-expanded="false"
-				aria-label="Toggle navigation"
 			>
 				<span class="navbar-toggler-icon"></span>
 			</button>
 			<div class="collapse navbar-collapse" id="navbarNavAltMarkup">
 				<div class="navbar-nav ml-auto">
-					<router-link class="nav-link mx-3" to="/">Home</router-link>
-					<router-link class="nav-link mx-3" to="/blog">Blog</router-link>
-					<router-link class="nav-link mx-3" to="/">Journalist</router-link>
+					<router-link class="nav-link mr-3" to="/">Home</router-link>
+					<router-link class="nav-link mr-3" :to="{ name: 'LatestBlog' }">Latest Blog</router-link>
+					<router-link class="nav-link mr-3" :to="{ name: 'OldestBlog' }">Oldest Blog</router-link>
+					<router-link class="nav-link mr-3" to="/">Journalist</router-link>
 				</div>
 			</div>
 		</div>
@@ -39,15 +37,17 @@ export default {};
 		transform-origin: 100% 50%;
 	}
 	.nav-link {
-		&::after {
-			display: block;
-			content: "";
-			border-bottom: solid 3px $text;
-			transform: scaleX(0);
-			transition: transform 200ms ease-in-out;
-		}
-		&:hover::after {
-			transform: scaleX(1);
+		@media (min-width: 992px) {
+			&::after {
+				display: block;
+				content: "";
+				border-bottom: solid 3px $text;
+				transform: scaleX(0);
+				transition: transform 200ms ease-in-out;
+			}
+			&:hover::after {
+				transform: scaleX(1);
+			}
 		}
 		&:hover {
 			color: $text;
@@ -56,6 +56,7 @@ export default {};
 		color: #000;
 	}
 	.navbar-brand {
+		text-decoration: underline;
 		color: $text;
 		font-weight: 700;
 	}
