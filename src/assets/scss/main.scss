@@ -8,3 +8,13 @@ body {
 .active {
 	color: $text !important;
 }
+
+#nprogress {
+	.spinner-icon {
+		display: none;
+	}
+
+	.bar {
+		background: $text !important;
+	}
+}

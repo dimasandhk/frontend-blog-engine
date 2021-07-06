@@ -11,6 +11,7 @@
 </template>
 
 <script>
+import progress from "nprogress";
 import GuestService from "../../api/GuestService";
 import BlogCard from "../../components/BlogCard.vue";
 
@@ -20,13 +21,17 @@ export default {
 		docs: {}
 	}),
 	async mounted() {
+		progress.start();
 		try {
 			const response = await GuestService.getOldestBlog(this.$route.query.page);
 			this.docs = { ...response };
+			this.$emit("notFound", false);
 		} catch (err) {
-			alert(`Page ${err.statusText}`);
+			this.$emit("notFound", true);
 			console.clear();
 		}
+
+		progress.done();
 	}
 };
 </script>

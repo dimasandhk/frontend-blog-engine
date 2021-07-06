@@ -22,6 +22,7 @@ export default {
 		span {
 			color: $text;
 		}
+		color: #333;
 		font-weight: 700;
 	}
 	.btn {

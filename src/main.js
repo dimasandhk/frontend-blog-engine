@@ -7,6 +7,7 @@ import store from "./store";
 
 // SCSS
 import "./assets/scss/main.scss";
+import "nprogress/nprogress.css";
 
 // Components
 import Navbar from "./components/Navbar.vue";

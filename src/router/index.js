@@ -14,10 +14,6 @@ const routes = [
 		redirect: "/blog/latest",
 		children: [
 			{
-				path: "/:catchAll(.*)",
-				redirect: "/blog/latest"
-			},
-			{
 				path: "latest",
 				name: "LatestBlog",
 				component: () => import("../views/blogs/LatestBlog.vue")
@@ -28,6 +24,11 @@ const routes = [
 				component: () => import("../views/blogs/OldestBlog.vue")
 			}
 		]
+	},
+	{
+		path: "/:catchAll(.*)",
+		name: "PageNotFound",
+		component: () => import("@/views/PageNotFound.vue")
 	}
 ];
 

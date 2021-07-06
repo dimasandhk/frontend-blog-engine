@@ -2,12 +2,24 @@
 	<div class="col-12 col-md-6 col-lg-4 mt-3">
 		<div class="box-blog rounded">
 			<div class="container">
-				<h5>{{ blog.title.substr(0, 27) }}{{ blog.title.length > 28 ? " ..." : "" }}</h5>
+				<h5>
+					<span class="card__bold"> {{ blog.title.substr(0, 25) }} </span
+					>{{ blog.title.length > 25 ? " ..." : "" }}
+				</h5>
 				<hr />
 				<p>{{ blog.desc }}</p>
 				<hr />
-				<p>Creator: {{ blog.creator }}</p>
-				<p class="crtd">Created: {{ blog.createdAt.split("T")[0] }}</p>
+				<p><span class="card__bold">Creator:</span> {{ blog.creator }}</p>
+				<p class="crtd">
+					<span class="card__bold">Created:</span> {{ blog.createdAt.split("T")[0] }}
+				</p>
+
+				<p class="crtd">
+					<span class="card__bold">Tags: </span>
+					<span v-for="(tag, i) of blog.tags" :key="tag"
+						>{{ tag }}{{ i == blog.tags.length - 1 ? "" : ", " }}
+					</span>
+				</p>
 				<button class="btn btn-dark btn-block shadow-none">Read More</button>
 			</div>
 		</div>
@@ -25,6 +37,9 @@ export default {
 <style lang="scss" scoped>
 @import "../assets/scss/scheme.scss";
 .box-blog {
+	.card__bold {
+		font-weight: 600;
+	}
 	.btn {
 		@include mainButton("false");
 	}
