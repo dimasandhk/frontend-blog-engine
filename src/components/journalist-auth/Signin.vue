@@ -1,18 +1,18 @@
 <template>
 	<div class="box-signin">
 		<h3 class="text-center"><span>Signin</span> to Blog Engine</h3>
-		<form>
+		<form @submit="passSignInData">
 			<div class="row justify-content-center">
 				<div class="col-12 col-md-12 col-lg-8">
 					<label>Email</label>
-					<input type="email" class="form-control shadow-none" required />
+					<input type="email" class="form-control shadow-none" v-model="email" required />
 				</div>
 				<div class="col-12 col-md-12 col-lg-8">
 					<label>Password</label>
-					<input type="password" class="form-control shadow-none" required />
+					<input type="password" class="form-control shadow-none" v-model="pass" required />
 				</div>
 				<div class="col-12 col-md-10 col-lg-8 text-center mt-3">
-					<button class="btn btn-dark shadow-none" type="submit">Become Journalist</button>
+					<button class="btn btn-dark shadow-none" type="submit">Enter the dashboard</button>
 				</div>
 			</div>
 		</form>
@@ -20,7 +20,20 @@
 </template>
 
 <script>
-export default {};
+import JournalistService from "../../api/JournalistService";
+
+export default {
+	data: () => ({
+		email: "",
+		pass: ""
+	}),
+	methods: {
+		async passSignInData(e) {
+			e.preventDefault();
+			console.log(await JournalistService.loginJournalist(this.email, this.pass));
+		}
+	}
+};
 </script>
 
 <style lang="scss" scoped>

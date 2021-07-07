@@ -3,7 +3,7 @@
 		<div class="container mt-5 text-center">
 			<h1 class="mb-4"><span>Blog Engine</span> by Dimas</h1>
 			<router-link class="btn btn-lg btn-dark shadow-none" :to="{ name: 'BlogSection' }">
-				Masuk Ke Blog
+				Continue
 			</router-link>
 		</div>
 	</div>

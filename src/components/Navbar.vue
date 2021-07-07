@@ -47,7 +47,12 @@
 </template>
 
 <script>
-export default {};
+import JournalistService from "../api/JournalistService";
+export default {
+	async mounted() {
+		console.log(await JournalistService.verifyJournalist());
+	}
+};
 </script>
 
 <style lang="scss" scoped>
