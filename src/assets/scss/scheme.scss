@@ -6,10 +6,37 @@ $bg: #960c0c;
 		@if ($useEffect == "true") {
 			margin-top: -5px;
 		}
-		background-color: lighten($color: $bg, $amount: 4%) !important;
+		background-color: lighten($color: $bg, $amount: 5%) !important;
 	}
 	font-weight: 700;
 	transition: 0.3s all;
 	border: none;
 	background-color: $bg !important;
+}
+
+@mixin authCard {
+	h3 {
+		span {
+			color: $text;
+		}
+		font-weight: 700;
+	}
+	label {
+		margin-top: 10px;
+		font-weight: 700;
+	}
+	.form-control {
+		&:focus {
+			border: 1.5px solid $bg;
+		}
+		border: 1px solid #333;
+		outline: none;
+	}
+
+	.btn {
+		@include mainButton("false");
+	}
+	border: 2px solid $bg;
+	border-radius: 4px;
+	padding: 20px;
 }

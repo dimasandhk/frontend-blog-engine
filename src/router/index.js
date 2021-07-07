@@ -26,6 +26,11 @@ const routes = [
 		]
 	},
 	{
+		path: "/journalist",
+		name: "Journalist",
+		component: () => import("../views/Journalist.vue")
+	},
+	{
 		path: "/:catchAll(.*)",
 		name: "PageNotFound",
 		component: () => import("@/views/PageNotFound.vue")

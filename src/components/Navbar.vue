@@ -35,7 +35,7 @@
 					>
 					<router-link
 						class="nav-link mr-3"
-						to="/"
+						to="/journalist"
 						data-toggle="collapse"
 						data-target=".navbar-collapse.show"
 						>Journalist</router-link
