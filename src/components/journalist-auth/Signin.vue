@@ -30,7 +30,13 @@ export default {
 	methods: {
 		async passSignInData(e) {
 			e.preventDefault();
-			console.log(await JournalistService.loginJournalist(this.email, this.pass));
+
+			try {
+				await JournalistService.loginJournalist(this.email, this.pass);
+				this.$router.push({ name: "JournalistArea" });
+			} catch (err) {
+				alert(err);
+			}
 		}
 	}
 };

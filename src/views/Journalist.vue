@@ -1,7 +1,8 @@
 <template>
 	<div>
 		<Navbar />
-		<div class="journalist__noauth mb-5">
+		<router-view v-if="!showAuth" />
+		<div class="journalist__noauth mb-5" v-else>
 			<div class="container">
 				<Signup v-if="selected == 'signup'" />
 				<Signin v-else />
@@ -21,8 +22,21 @@ export default {
 	components: { Signup, Signin },
 	data: () => ({
 		navClass: "btn btn-dark shadow-none",
-		selected: "signup"
-	})
+		selected: "signup",
+		showAuth: true
+	}),
+	created() {
+		if (this.$route.path == "/journalist/dashboard") return (this.showAuth = false);
+		this.showAuth = true;
+	},
+	watch: {
+		$route: {
+			handler(value) {
+				if (value.path == "/journalist/dashboard") return (this.showAuth = false);
+				this.showAuth = true;
+			}
+		}
+	}
 };
 </script>
 

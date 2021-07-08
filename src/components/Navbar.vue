@@ -34,6 +34,15 @@
 						>Oldest Blog</router-link
 					>
 					<router-link
+						v-if="showDashboard"
+						:to="{ name: 'JournalistArea' }"
+						class="nav-link mr-3"
+						data-toggle="collapse"
+						data-target=".navbar-collapse.show"
+						>Dashboard</router-link
+					>
+					<router-link
+						v-else
 						class="nav-link mr-3"
 						to="/journalist"
 						data-toggle="collapse"
@@ -49,8 +58,25 @@
 <script>
 import JournalistService from "../api/JournalistService";
 export default {
-	async mounted() {
-		console.log(await JournalistService.verifyJournalist());
+	data: () => ({
+		showDashboard: false
+	}),
+	async created() {
+		try {
+			await JournalistService.verifyJournalist();
+			this.showDashboard = true;
+		} catch (err) {
+			this.showDashboard = false;
+		}
+	},
+	watch: {
+		$route: {
+			handler(value) {
+				if (value.path == "/journalist/dashboard") {
+					this.showDashboard = true;
+				}
+			}
+		}
 	}
 };
 </script>

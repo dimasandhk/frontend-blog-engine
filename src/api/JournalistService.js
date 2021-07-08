@@ -13,4 +13,12 @@ export default class {
 		const response = await axios.post("/api/journalist/profile-verify");
 		return response.data;
 	}
+	static async logoutJournalist() {
+		const response = await axios.post("/api/journalist/logout");
+		return response.data;
+	}
+	static async getBlog(id) {
+		const response = await axios.get(`/api/journalist/blog?id=${id}`);
+		return response.data;
+	}
 }

@@ -1,5 +1,7 @@
 import { createRouter, createWebHistory } from "vue-router";
+
 import Home from "../views/Home.vue";
+import Journalist from "../api/JournalistService";
 
 const routes = [
 	{
@@ -28,7 +30,31 @@ const routes = [
 	{
 		path: "/journalist",
 		name: "Journalist",
-		component: () => import("../views/Journalist.vue")
+		component: () => import("../views/Journalist.vue"),
+		children: [
+			{
+				path: "dashboard",
+				name: "JournalistArea",
+				component: () => import("../views/journalist/JournalistArea.vue")
+			}
+		],
+		beforeEnter: async function(to, from, next) {
+			if (to.path == "/journalist") {
+				try {
+					await Journalist.verifyJournalist();
+					return next("/journalist/dashboard");
+				} catch (err) {
+					return next();
+				}
+			} else if (to.path == "/journalist/dashboard") {
+				try {
+					await Journalist.verifyJournalist();
+					return next();
+				} catch (err) {
+					return next("/journalist");
+				}
+			}
+		}
 	},
 	{
 		path: "/:catchAll(.*)",

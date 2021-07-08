@@ -41,7 +41,12 @@ export default {
 			const { username, email, pass } = this;
 
 			e.preventDefault();
-			console.log(await JournalistService.signupJournalist(username, email, pass));
+			try {
+				await JournalistService.signupJournalist(username, email, pass);
+				this.$router.push({ name: "JournalistArea" });
+			} catch (err) {
+				alert(err);
+			}
 		}
 	}
 };
