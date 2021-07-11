@@ -2,6 +2,13 @@
 @import "./scheme.scss";
 
 body {
+	code {
+		color: $text !important;
+		background-color: #f6f6f6;
+		border-radius: 4px;
+		font-weight: 600;
+		padding: 1.5px;
+	}
 	font-family: "Poppins", sans-serif;
 }
 

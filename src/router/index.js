@@ -57,6 +57,11 @@ const routes = [
 		}
 	},
 	{
+		path: "/read-blog/:id",
+		name: "ReadBlog",
+		component: () => import("../views/blogs/ReadBlog.vue")
+	},
+	{
 		path: "/:catchAll(.*)",
 		name: "PageNotFound",
 		component: () => import("@/views/PageNotFound.vue")

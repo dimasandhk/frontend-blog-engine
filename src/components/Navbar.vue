@@ -72,9 +72,8 @@ export default {
 	watch: {
 		$route: {
 			handler(value) {
-				if (value.path == "/journalist/dashboard") {
-					this.showDashboard = true;
-				}
+				if (value.path == "/journalist/dashboard") this.showDashboard = true;
+				else this.showDashboard = false;
 			}
 		}
 	}
