@@ -1,4 +1,5 @@
-# client
+# Blog Engine
+A simple Blog CRUD App, you can see the API architecture here: https://github.com/dimasandhk/blog-engine-api
 
 ## Project setup
 ```
